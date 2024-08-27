@@ -14,7 +14,7 @@
     const textoInfo = document.getElementById("textoInfo");
     const persona = document.getElementById("persona");
     const derecha = document.getElementById("derecha");
-
+    const soloMinusculas = /^[a-z ]+$/
    /*La letra "e" es convertida para "enter"
     La letra "i" es convertida para "imes"
     La letra "a" es convertida para "ai"
@@ -25,6 +25,13 @@
     button_encriptar.addEventListener("click", () => {
         /*Obtiene el valor del campo de entrada y lo convierte a minúsculas*/ 
         let textoEntrante = textoInput.value.toLowerCase();
+        /*Verificamos - No deben ser utilizados letras con acentos ni caracteres especiales*/
+        if (!soloMinusculas.test(textoEntrante)) {
+            /* textoFinal.textContent = "Solo se permiten letras minúsculas sin acentos ni caracteres especiales."; */
+            console.log("Entrada no válida");
+            alert("Entrada no valida, Solo se permiten letras minúsculas sin acentos ni caracteres especiales ");
+            return;
+        }
         /*Llama a la función desencriptar con el texto en minúsculas y guarda el resultado*/
         let codificado = encriptar(textoEntrante);
         /*Muestra el texto desencriptado en el textArea textoFinal*/
@@ -41,7 +48,14 @@
     });
 
     button_desencriptar.addEventListener("click", () => {
+
         let textoEntrante = textoInput.value.toLowerCase();
+        if (!soloMinusculas.test(texto1)) {
+           /* textoFinal.textContent = "Solo se permiten letras minúsculas sin acentos ni caracteres especiales."; */
+            console.log("Entrada no válida");
+            alert("Entrada no valida, Solo se permiten letras minúsculas sin acentos ni caracteres especiales");
+            return;
+        }
         let decodificado = desencriptar(textoEntrante);
         textoFinal.textContent = decodificado;
         console.log(decodificado);
