@@ -50,7 +50,7 @@
     button_desencriptar.addEventListener("click", () => {
 
         let textoEntrante = textoInput.value.toLowerCase();
-        if (!soloMinusculas.test(texto1)) {
+        if (!soloMinusculas.test(textoEntrante)) {
            /* textoFinal.textContent = "Solo se permiten letras minúsculas sin acentos ni caracteres especiales."; */
             console.log("Entrada no válida");
             alert("Entrada no valida, Solo se permiten letras minúsculas sin acentos ni caracteres especiales");
